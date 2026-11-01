@@ -1,0 +1,319 @@
+---
+// EchoGridDiagram.astro
+// Custom 16:9 inline SVG diagram illustrating: Stylized structure with sensor nodes and signal lines (Proposal)
+---
+
+<div class="relative w-full aspect-[16/9] overflow-hidden rounded-item bg-surface/80 border border-border flex items-center justify-center p-2 sm:p-4 select-none">
+  <svg
+    viewBox="0 0 640 360"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    class="w-full h-full text-text"
+    role="img"
+    aria-label="EchoGrid proposal diagram showing physical structure, distributed sensor nodes, acoustic signal lines, and central analysis gateway"
+  >
+    <!-- Background Grid -->
+    <pattern id="echo-grid" width="32" height="32" patternUnits="userSpaceOnUse">
+      <path
+        d="M 32 0 L 0 0 0 32"
+        fill="none"
+        stroke="currentColor"
+        stroke-opacity="0.05"
+        stroke-width="1"
+      />
+    </pattern>
+    <rect width="640" height="360" fill="url(#echo-grid)" />
+
+    <!-- Structural Frame / Truss Silhouette -->
+    <!-- Base Foundation Line -->
+    <line x1="40" y1="280" x2="420" y2="280" stroke="var(--border)" stroke-width="3" />
+
+    <!-- Vertical Pillars -->
+    <line x1="80" y1="120" x2="80" y2="280" stroke="var(--border)" stroke-width="2" />
+    <line x1="220" y1="120" x2="220" y2="280" stroke="var(--border)" stroke-width="2" />
+    <line x1="360" y1="120" x2="360" y2="280" stroke="var(--border)" stroke-width="2" />
+
+    <!-- Horizontal Deck / Superstructure -->
+    <line
+      x1="60"
+      y1="120"
+      x2="380"
+      y2="120"
+      stroke="var(--border)"
+      stroke-width="3"
+      stroke-linecap="round"
+    />
+    <line x1="60" y1="140" x2="380" y2="140" stroke="var(--border)" stroke-width="1.5" />
+
+    <!-- Cross Bracing (Truss lines) -->
+    <line
+      x1="80"
+      y1="140"
+      x2="220"
+      y2="280"
+      stroke="var(--border)"
+      stroke-width="1"
+      stroke-dasharray="2 3"
+    />
+    <line
+      x1="220"
+      y1="140"
+      x2="80"
+      y2="280"
+      stroke="var(--border)"
+      stroke-width="1"
+      stroke-dasharray="2 3"
+    />
+    <line
+      x1="220"
+      y1="140"
+      x2="360"
+      y2="280"
+      stroke="var(--border)"
+      stroke-width="1"
+      stroke-dasharray="2 3"
+    />
+    <line
+      x1="360"
+      y1="140"
+      x2="220"
+      y2="280"
+      stroke="var(--border)"
+      stroke-width="1"
+      stroke-dasharray="2 3"
+    />
+
+    <!-- Sensor Node 1: Deck Mid-span -->
+    <g transform="translate(150, 120)">
+      <!-- Wave / Pulse Rings -->
+      <circle
+        cx="0"
+        cy="0"
+        r="18"
+        fill="none"
+        stroke="var(--accent)"
+        stroke-width="1"
+        stroke-opacity="0.3"
+        class="animate-ping"
+      />
+      <circle
+        cx="0"
+        cy="0"
+        r="10"
+        fill="none"
+        stroke="var(--accent)"
+        stroke-width="1"
+        stroke-opacity="0.6"
+      />
+      <circle cx="0" cy="0" r="4" fill="var(--accent)" />
+
+      <!-- Label -->
+      <rect
+        x="-30"
+        y="-36"
+        width="60"
+        height="18"
+        rx="4"
+        fill="var(--surface)"
+        stroke="var(--accent)"
+        stroke-width="1"
+      />
+      <text
+        x="0"
+        y="-24"
+        text-anchor="middle"
+        fill="var(--accent)"
+        font-family="var(--font-mono)"
+        font-size="8.5"
+        font-weight="bold"
+      >
+        NODE S1
+      </text>
+    </g>
+
+    <!-- Sensor Node 2: Center Pier Joint -->
+    <g transform="translate(220, 200)">
+      <circle
+        cx="0"
+        cy="0"
+        r="14"
+        fill="none"
+        stroke="var(--accent-2)"
+        stroke-width="1"
+        stroke-opacity="0.4"
+      />
+      <circle cx="0" cy="0" r="4" fill="var(--accent-2)" />
+
+      <rect
+        x="14"
+        y="-8"
+        width="60"
+        height="18"
+        rx="4"
+        fill="var(--surface)"
+        stroke="var(--accent-2)"
+        stroke-width="1"
+      />
+      <text
+        x="44"
+        y="4"
+        text-anchor="middle"
+        fill="var(--accent-2)"
+        font-family="var(--font-mono)"
+        font-size="8.5"
+      >
+        NODE S2
+      </text>
+    </g>
+
+    <!-- Sensor Node 3: Right Span -->
+    <g transform="translate(290, 120)">
+      <circle
+        cx="0"
+        cy="0"
+        r="10"
+        fill="none"
+        stroke="var(--accent)"
+        stroke-width="1"
+        stroke-opacity="0.6"
+      />
+      <circle cx="0" cy="0" r="4" fill="var(--accent)" />
+
+      <rect
+        x="-30"
+        y="-36"
+        width="60"
+        height="18"
+        rx="4"
+        fill="var(--surface)"
+        stroke="var(--accent)"
+        stroke-width="1"
+      />
+      <text
+        x="0"
+        y="-24"
+        text-anchor="middle"
+        fill="var(--accent)"
+        font-family="var(--font-mono)"
+        font-size="8.5"
+        font-weight="bold"
+      >
+        NODE S3
+      </text>
+    </g>
+
+    <!-- Signal Bus Lines from Nodes to Aggregator Gateway -->
+    <!-- Signal from S1 -->
+    <path
+      d="M 150 120 C 150 70, 420 70, 480 140"
+      fill="none"
+      stroke="var(--accent)"
+      stroke-width="1.5"
+      stroke-dasharray="4 4"
+      stroke-opacity="0.8"
+    />
+    <!-- Signal from S2 -->
+    <path
+      d="M 220 200 C 320 200, 420 180, 480 160"
+      fill="none"
+      stroke="var(--accent-2)"
+      stroke-width="1.5"
+      stroke-dasharray="4 4"
+      stroke-opacity="0.8"
+    />
+    <!-- Signal from S3 -->
+    <path
+      d="M 290 120 C 370 100, 430 140, 480 150"
+      fill="none"
+      stroke="var(--accent)"
+      stroke-width="1.5"
+      stroke-dasharray="4 4"
+      stroke-opacity="0.8"
+    />
+
+    <!-- Right Box: Gateway & Analysis Unit -->
+    <g transform="translate(480, 90)">
+      <rect
+        width="135"
+        height="180"
+        rx="8"
+        fill="var(--surface)"
+        stroke="var(--border)"
+        stroke-width="1.5"
+      />
+      <rect width="135" height="26" rx="8" fill="var(--border)" fill-opacity="0.4" />
+      <text
+        x="12"
+        y="17"
+        fill="var(--accent)"
+        font-family="var(--font-mono)"
+        font-size="9"
+        font-weight="bold"
+      >
+        EDGE GATEWAY
+      </text>
+
+      <!-- Real-time harmonic waveform visualization -->
+      <g transform="translate(12, 38)">
+        <rect
+          width="111"
+          height="42"
+          rx="4"
+          fill="var(--surface-subtle)"
+          stroke="var(--border)"
+          stroke-width="1"
+        />
+        <!-- Waveform curve -->
+        <path
+          d="M 6 21 Q 18 4, 30 21 T 54 21 T 78 21 T 102 21"
+          fill="none"
+          stroke="var(--accent)"
+          stroke-width="1.5"
+        />
+        <text x="6" y="36" fill="var(--muted)" font-family="var(--font-mono)" font-size="7">
+          FFT Spectrum
+        </text>
+      </g>
+
+      <!-- Processing metrics -->
+      <g transform="translate(12, 92)">
+        <text x="0" y="10" fill="var(--muted)" font-family="var(--font-mono)" font-size="9">
+          Sampling: Continuous
+        </text>
+        <text x="0" y="24" fill="var(--muted)" font-family="var(--font-mono)" font-size="9">
+          Acoustic / Piezo
+        </text>
+        <text x="0" y="38" fill="var(--muted)" font-family="var(--font-mono)" font-size="9">
+          Anomaly: Baseline Δ
+        </text>
+
+        <rect
+          x="0"
+          y="52"
+          width="111"
+          height="18"
+          rx="4"
+          fill="var(--accent)"
+          fill-opacity="0.1"
+          stroke="var(--accent)"
+          stroke-width="1"
+        />
+        <text
+          x="6"
+          y="64"
+          fill="var(--accent)"
+          font-family="var(--font-mono)"
+          font-size="8.5"
+          font-weight="600"
+        >
+          PROPOSAL MODEL
+        </text>
+      </g>
+    </g>
+
+    <!-- Monospace footer in diagram -->
+    <text x="40" y="325" fill="var(--muted)" font-family="var(--font-mono)" font-size="9">
+      FIG 2.0 · PASSIVE STRUCTURAL VIBRATION NETWORK ARCHITECTURE
+    </text>
+  </svg>
+</div>

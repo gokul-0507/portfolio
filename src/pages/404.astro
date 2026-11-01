@@ -1,0 +1,47 @@
+---
+// 404.astro
+import Base from '../layouts/Base.astro';
+import { siteData } from '../data/site';
+---
+
+<Base
+  title={`404: Coordinate Not Found | ${siteData.name}`}
+  description="The requested route does not exist."
+>
+  <div class="min-h-[70vh] flex items-center justify-center py-16 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-md w-full text-center space-y-6 rounded-card border border-border bg-surface p-8 sm:p-10 shadow-xl">
+      <!-- Monospace Error Status -->
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/30 text-accent font-mono text-xs font-semibold">
+        <span class="w-2 h-2 rounded-full bg-accent animate-ping" aria-hidden="true"></span>
+        <span>ERROR 404 · SIGNAL LOST</span>
+      </div>
+
+      <!-- Single H1 for 404 Page -->
+      <h1 class="type-h2 font-display text-text font-bold">Coordinate Not Found</h1>
+
+      <p class="type-body text-sm sm:text-base text-muted leading-relaxed">
+        The requested pathway or file could not be located in this registry. The route may have
+        shifted or does not exist.
+      </p>
+
+      <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
+        <a
+          href="/"
+          class="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 rounded-item bg-accent text-bg font-mono text-xs font-semibold hover:opacity-90 transition-opacity focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent w-full sm:w-auto"
+        >
+          <span>Return Home</span>
+          <span aria-hidden="true" class="ml-1.5 font-sans">
+            →
+          </span>
+        </a>
+
+        <a
+          href="/#projects"
+          class="inline-flex items-center justify-center min-h-[44px] px-6 py-2.5 rounded-item border border-border bg-surface text-muted hover:text-text hover:border-accent font-mono text-xs font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent w-full sm:w-auto"
+        >
+          <span>Browse Projects</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</Base>

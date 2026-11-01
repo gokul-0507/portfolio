@@ -1,0 +1,25 @@
+---
+// ProjectsSection.astro
+import ProjectCard from './ProjectCard.astro';
+import { siteData } from '../data/site';
+---
+
+<section id="projects" class="py-16 sm:py-24 border-b border-[var(--white-icon-tr)] scroll-mt-20">
+  <div class="max-w-5xl mx-auto px-9 sm:px-16 lg:px-20">
+    <!-- Section heading (inline, no SectionHeading component) -->
+    <div class="mb-10 sm:mb-14">
+      <p class="text-base text-[var(--sec)] shiny-sec mb-2">My work</p>
+      <h2 class="text-4xl md:text-5xl font-medium text-[var(--white)] leading-tight">Projects</h2>
+      <p class="text-sm font-mono text-[var(--white-icon)] mt-2">
+        Computational systems and engineering proposals built around AI, sensing, and data.
+      </p>
+    </div>
+
+    <!-- 2-column card grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
+      {siteData.projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
+    </div>
+  </div>
+</section>

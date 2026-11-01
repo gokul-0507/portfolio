@@ -1,0 +1,243 @@
+@import '@fontsource/space-grotesk/500.css';
+@import '@fontsource/space-grotesk/600.css';
+@import '@fontsource/space-grotesk/700.css';
+@import '@fontsource/inter/400.css';
+@import '@fontsource/inter/500.css';
+@import '@fontsource/inter/600.css';
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Dark-minimal palette (template-inspired) */
+  --background: #101010;
+  --bg: #101010;
+  --sec: #a476ff;
+  --white: #dfdfdf;
+  --white-icon: rgba(243, 243, 243, 0.6);
+  --white-icon-tr: rgba(243, 243, 243, 0.06);
+  --component-bg: rgba(20, 20, 20, 0.9);
+  --card-bg: rgba(20, 20, 20, 0.7);
+  --card-border: rgba(243, 243, 243, 0.08);
+  --input-bg: rgba(20, 20, 20, 0.6);
+  --input-border: rgba(243, 243, 243, 0.12);
+  --input-placeholder: rgba(243, 243, 243, 0.45);
+  --pill-bg: rgba(243, 243, 243, 0.06);
+  --pill-text: rgba(243, 243, 243, 0.75);
+  --pill-border: rgba(243, 243, 243, 0.1);
+  --btn-bg: rgba(20, 20, 20, 0.6);
+  --btn-border: rgba(243, 243, 243, 0.12);
+  --btn-hover-bg: rgba(243, 243, 243, 0.1);
+
+  /* Semantic aliases for backward-compat */
+  --surface: #161616;
+  --surface-subtle: #1c1c1c;
+  --border: #2a2a2a;
+  --border-subtle: #333333;
+  --text: #dfdfdf;
+  --muted: rgba(243, 243, 243, 0.6);
+  --accent: #a476ff;
+  --accent-2: #e89528;
+  --accent-dim: rgba(164, 118, 255, 0.08);
+
+  --font-display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+  --color-scheme: dark;
+}
+
+[data-theme='light'] {
+  /* Pure White Light Theme */
+  --background: #ffffff;
+  --bg: #ffffff;
+  --sec: #7c3aed;
+  --white: #0f172a;
+  --white-icon: rgba(15, 23, 42, 0.7);
+  --white-icon-tr: rgba(15, 23, 42, 0.08);
+  --component-bg: rgba(255, 255, 255, 0.95);
+  --card-bg: #ffffff;
+  --card-border: #e2e8f0;
+  --input-bg: #ffffff;
+  --input-border: #cbd5e1;
+  --input-placeholder: #64748b;
+  --pill-bg: #f8fafc;
+  --pill-text: #1e293b;
+  --pill-border: #e2e8f0;
+  --btn-bg: #f8fafc;
+  --btn-border: #e2e8f0;
+  --btn-hover-bg: #f1f5f9;
+
+  --surface: #ffffff;
+  --surface-subtle: #f8fafc;
+  --border: #e2e8f0;
+  --border-subtle: #cbd5e1;
+  --text: #0f172a;
+  --muted: #64748b;
+  --accent: #7c3aed;
+  --accent-2: #b45309;
+  --accent-dim: rgba(124, 58, 237, 0.06);
+
+  --color-scheme: light;
+}
+
+html {
+  color-scheme: var(--color-scheme);
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+/* ──── Animated shiny accent text ──────────────────────────────── */
+.shiny-sec {
+  background: linear-gradient(135deg, #a476ff 25%, #eee5ff 50%, #a476ff 75%);
+  background-size: 400% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 3s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 100% 50%;
+  }
+  30%,
+  70% {
+    background-position: 0% 50%;
+  }
+}
+
+/* ──── Logo wall infinite scroll ───────────────────────────────── */
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 60s linear infinite;
+}
+
+@media (min-width: 768px) {
+  .animate-scroll {
+    animation-duration: 50s;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Accessible, clear focus outlines */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Fluid typography utilities */
+.type-hero {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw + 0.8rem, 4.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+.type-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw + 0.5rem, 3.25rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.type-h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.8vw + 0.5rem, 2.25rem);
+  line-height: 1.24;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+
+.type-h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 1.5vw + 0.5rem, 1.5rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  font-weight: 600;
+}
+
+.type-body {
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 0.4vw + 0.875rem, 1.125rem);
+  line-height: 1.65;
+}
+
+.type-mono {
+  font-family: var(--font-mono);
+}
+
+/* Subtle hand-drawn underline accent */
+.sketch-underline {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.sketch-underline svg {
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 10px;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* View transitions */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 180ms;
+  animation-timing-function: ease-out;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,81 @@
+---
+// Experience.astro
+import { siteData } from '../data/site';
+---
+
+<section id="experience" class="py-16 sm:py-24 border-b border-[var(--white-icon-tr)] scroll-mt-20">
+  <div class="max-w-5xl mx-auto px-9 sm:px-16 lg:px-20">
+    <!-- Section heading -->
+    <div class="mb-10 sm:mb-14">
+      <p class="text-base text-[var(--sec)] shiny-sec mb-2">Where I've worked</p>
+      <h2 class="text-4xl md:text-5xl font-medium text-[var(--white)] leading-tight">Experience</h2>
+      <p class="text-sm font-mono text-[var(--white-icon)] mt-2">
+        Internships and research roles I've undertaken so far.
+      </p>
+    </div>
+
+    <!-- Vertical Timeline -->
+    <div class="relative pl-6 sm:pl-8 border-l border-[var(--white-icon-tr)] ml-2 sm:ml-4 space-y-8 sm:space-y-10">
+      {
+        siteData.experience.map((item) => (
+          <div class="relative group">
+            <!-- Timeline Marker Dot -->
+            <div
+              class:list={[
+                'absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 rounded-full border-2 transition-colors duration-200',
+                item.isCurrent
+                  ? 'bg-[var(--sec)] border-[var(--bg)]'
+                  : 'bg-[var(--surface)] border-[var(--border)] group-hover:border-[var(--white-icon)]',
+              ]}
+              aria-hidden="true"
+            />
+
+            <!-- Experience Entry -->
+            <div
+              class:list={[
+                'rounded-card border bg-[var(--card-bg)] p-5 sm:p-6 transition-all duration-150 shadow-sm',
+                item.isCurrent
+                  ? 'border-[var(--sec)]/40 ring-1 ring-[var(--sec)]/20'
+                  : 'border-[var(--card-border)] hover:border-[var(--sec)]',
+              ]}
+            >
+              <!-- Card Header -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 sm:gap-4 border-b border-[var(--card-border)] pb-3 mb-3">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 class="text-lg sm:text-xl font-display text-[var(--white)] font-semibold">
+                      {item.role}
+                    </h3>
+                    {item.isCurrent && (
+                      <span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-mono font-medium bg-[var(--sec)]/10 text-[var(--sec)] border border-[var(--sec)]/30">
+                        Current
+                      </span>
+                    )}
+                  </div>
+                  <p class="text-sm text-[var(--white-icon)] font-medium mt-0.5">{item.company}</p>
+                </div>
+
+                <!-- Period Badge -->
+                <div class="shrink-0 self-start sm:self-center">
+                  <span class="text-xs font-mono text-[var(--white-icon)]">{item.period}</span>
+                </div>
+              </div>
+
+              <!-- Metadata -->
+              <div class="space-y-2 text-sm">
+                <div class="flex flex-wrap items-center gap-3 text-xs font-mono text-[var(--white-icon)]">
+                  <span>📍 {item.location}</span>
+                  {item.workMode && <span>· Mode: {item.workMode}</span>}
+                  <span>· Domain: {item.domain}</span>
+                </div>
+                {item.focus && (
+                  <p class="text-sm text-[var(--white-icon)] pt-1">{item.focus}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

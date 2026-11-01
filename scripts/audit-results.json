@@ -1,0 +1,54 @@
+{
+  "axe": {
+    "/": {
+      "violationsCount": 0,
+      "violations": []
+    },
+    "/projects/satquery-ai": {
+      "violationsCount": 0,
+      "violations": []
+    }
+  },
+  "responsive": {
+    "360": {
+      "dark": {
+        "hasHorizontalScroll": false
+      },
+      "light": {
+        "hasHorizontalScroll": false
+      }
+    },
+    "768": {
+      "dark": {
+        "hasHorizontalScroll": false
+      },
+      "light": {
+        "hasHorizontalScroll": false
+      }
+    },
+    "1024": {
+      "dark": {
+        "hasHorizontalScroll": false
+      },
+      "light": {
+        "hasHorizontalScroll": false
+      }
+    },
+    "1440": {
+      "dark": {
+        "hasHorizontalScroll": false
+      },
+      "light": {
+        "hasHorizontalScroll": false
+      }
+    }
+  },
+  "performance": {
+    "lcpMs": "264.00",
+    "cls": "0.0000"
+  },
+  "bundleSizes": {
+    "totalJsKb": "16.05",
+    "totalCssKb": "55.55"
+  }
+}

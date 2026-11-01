@@ -1,0 +1,58 @@
+---
+// Education.astro
+import SectionHeading from './SectionHeading.astro';
+import { siteData } from '../data/site';
+---
+
+<section id="education" class="py-16 sm:py-24 border-b border-border scroll-mt-16">
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      number="06"
+      label="Education"
+      title="Academic Foundation"
+      description="Formal undergraduate curriculum integrating fundamental computer science principles with design engineering."
+    />
+
+    <div class="rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-6 sm:p-8 shadow-sm">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div class="md:col-span-8 space-y-3">
+          <div class="inline-flex items-center gap-2 text-xs font-mono text-[var(--sec)] font-medium">
+            <span class="w-2 h-2 rounded-full bg-[var(--sec)]"></span>
+            <span>UNDERGRADUATE STUDIES</span>
+          </div>
+
+          <h3 class="text-xl sm:text-2xl text-[var(--white)] font-display font-bold">
+            {siteData.college}
+          </h3>
+
+          <p class="text-base sm:text-lg text-[var(--white)] font-medium">{siteData.degree}</p>
+
+          <p class="text-sm text-[var(--white-icon)] leading-relaxed max-w-xl">
+            Curriculum encompasses algorithmic problem-solving, discrete structures, data
+            architectures, and design synthesis. Grounding theoretical computer science with
+            human-centered systems design.
+          </p>
+        </div>
+
+        <div class="md:col-span-4 md:border-l md:border-[var(--card-border)] md:pl-6 space-y-3 text-xs font-mono">
+          <div>
+            <span class="text-[var(--white-icon)] block">DURATION</span>
+            <span class="text-[var(--white)] font-medium text-sm mt-0.5 block">{siteData.batch}</span>
+          </div>
+
+          <div>
+            <span class="text-[var(--white-icon)] block">AFFILIATION</span>
+            <span class="text-[var(--white)] font-medium text-sm mt-0.5 block">
+              Anna University Affiliated
+            </span>
+          </div>
+
+          <div>
+            <span class="text-[var(--white-icon)] block">STATUS</span>
+            <span class="text-[var(--sec)] font-medium text-sm mt-0.5 block">Currently Enrolled</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

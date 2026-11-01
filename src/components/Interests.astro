@@ -1,0 +1,62 @@
+---
+// Interests.astro
+import SectionHeading from './SectionHeading.astro';
+
+const interestDetails = [
+  {
+    name: 'Software Development',
+    code: 'INT_01',
+    description:
+      'Constructing maintainable, performant full-stack systems and engineering clean software architectures.',
+  },
+  {
+    name: 'AI / Machine Learning',
+    code: 'INT_02',
+    description:
+      'Exploring probabilistic reasoning, neural representations, and data-driven computational models.',
+  },
+  {
+    name: 'Computer Vision',
+    code: 'INT_03',
+    description:
+      'Feature extraction, spatial image analysis, and perception algorithms for remote sensing data.',
+  },
+  {
+    name: 'Agentic AI',
+    code: 'INT_04',
+    description:
+      'Autonomous tool orchestration, chain-of-thought execution, and multi-step reasoning agents.',
+  },
+];
+---
+
+<section id="interests" class="py-16 sm:py-24 border-b border-border scroll-mt-16">
+  <div class="max-w-content mx-auto px-4 sm:px-6 lg:px-8">
+    <SectionHeading
+      number="05"
+      label="Interests"
+      title="Areas of Exploration"
+      description="Active engineering domains and theoretical subjects shaping current research and project directions."
+    />
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+      {interestDetails.map((interest) => (
+        <div class="rounded-2xl border border-[var(--card-border)] bg-[var(--card-bg)] p-5 sm:p-6 flex flex-col justify-between hover:border-[var(--sec)] transition-colors duration-200 shadow-sm">
+          <div>
+            <div class="flex items-center justify-between text-xs font-mono text-[var(--white-icon)] mb-4 border-b border-[var(--card-border)] pb-2">
+              <span>{interest.code}</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-[var(--sec)]" aria-hidden="true"></span>
+            </div>
+            <h3 class="text-base sm:text-lg font-display text-[var(--white)] font-semibold mb-2">
+              {interest.name}
+            </h3>
+            <p class="text-xs sm:text-sm text-[var(--white-icon)] leading-relaxed">{interest.description}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-[var(--card-border)] text-[11px] font-mono text-[var(--white-icon)]">
+            Active Focus
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

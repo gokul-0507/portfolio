@@ -1,0 +1,26 @@
+---
+// SectionHeading.astro
+export interface Props {
+  number: string;
+  label: string;
+  title: string;
+  description?: string;
+}
+
+const { number, label, title, description } = Astro.props;
+---
+
+<div class="mb-10 sm:mb-14 space-y-3">
+  <!-- Quiet Wayfinding Label -->
+  <div class="inline-flex items-center gap-2 text-xs font-mono text-[var(--white-icon)] tracking-wider uppercase font-semibold">
+    <span class="text-[var(--sec)]">{number}</span>
+    <span class="text-[var(--white-icon)] opacity-40">/</span>
+    <span>{label}</span>
+  </div>
+
+  <h2 class="text-4xl md:text-5xl font-medium text-[var(--white)] leading-tight tracking-tight">{title}</h2>
+
+  {description && (
+    <p class="text-[var(--white-icon)] max-w-2xl text-base sm:text-lg leading-relaxed">{description}</p>
+  )}
+</div>

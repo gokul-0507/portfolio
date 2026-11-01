@@ -1,0 +1,42 @@
+---
+// index.astro
+import Base from '../layouts/Base.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import ProjectsSection from '../components/ProjectsSection.astro';
+import Skills from '../components/Skills.astro';
+import Interests from '../components/Interests.astro';
+import Education from '../components/Education.astro';
+import Contact from '../components/Contact.astro';
+import { siteData } from '../data/site';
+---
+
+<Base
+  title={`${siteData.name} | Computer Science and Design Student`}
+  description="Personal portfolio of Gokul J., an undergraduate in Computer Science and Design at SRM Easwari Engineering College exploring software development, AI/ML, and sensing systems."
+>
+  <!-- 1. Hero -->
+  <Hero />
+
+  <!-- 2. About -->
+  <About />
+
+  <!-- 3. Experience -->
+  <Experience />
+
+  <!-- 4. Projects -->
+  <ProjectsSection />
+
+  <!-- 5. Skills -->
+  <Skills />
+
+  <!-- 6. Interests -->
+  <Interests />
+
+  <!-- 7. Education -->
+  <Education />
+
+  <!-- 8. Contact -->
+  <Contact />
+</Base>

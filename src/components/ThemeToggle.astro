@@ -1,0 +1,92 @@
+---
+// ThemeToggle.astro
+---
+
+<button
+  id="theme-toggle"
+  type="button"
+  class="relative inline-flex items-center justify-center w-11 h-11 rounded-item border border-border bg-surface text-text hover:border-accent hover:text-accent transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
+  aria-label="Toggle color theme"
+  title="Toggle dark/light theme"
+>
+  <!-- Moon icon (shows in light mode to switch to dark) -->
+  <svg
+    id="theme-icon-moon"
+    class="w-5 h-5 hidden"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path>
+  </svg>
+
+  <!-- Sun icon (shows in dark mode to switch to light) -->
+  <svg
+    id="theme-icon-sun"
+    class="w-5 h-5 hidden"
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    aria-hidden="true"
+  >
+    <circle cx="12" cy="12" r="4"></circle>
+    <path d="M12 2v2"></path>
+    <path d="M12 20v2"></path>
+    <path d="m4.93 4.93 1.41 1.41"></path>
+    <path d="m17.66 17.66 1.41 1.41"></path>
+    <path d="M2 12h2"></path>
+    <path d="M20 12h2"></path>
+    <path d="m6.34 17.66-1.41 1.41"></path>
+    <path d="m19.07 4.93-1.41 1.41"></path>
+  </svg>
+</button>
+
+<script>
+  function setupThemeToggle() {
+    const toggleBtn = document.getElementById('theme-toggle');
+    const moonIcon = document.getElementById('theme-icon-moon');
+    const sunIcon = document.getElementById('theme-icon-sun');
+
+    function updateIcons(currentTheme: string) {
+      if (currentTheme === 'dark') {
+        sunIcon?.classList.remove('hidden');
+        moonIcon?.classList.add('hidden');
+      } else {
+        moonIcon?.classList.remove('hidden');
+        sunIcon?.classList.add('hidden');
+      }
+    }
+
+    function getTheme(): string {
+      return document.documentElement.getAttribute('data-theme') || 'dark';
+    }
+
+    // Set initial icon state
+    updateIcons(getTheme());
+
+    toggleBtn?.addEventListener('click', () => {
+      const current = getTheme();
+      const next = current === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try {
+        localStorage.setItem('theme', next);
+      } catch (e) {
+        // Ignore localStorage errors in private browsing
+      }
+      updateIcons(next);
+    });
+  }
+
+  // Setup on initial load and after view transitions
+  setupThemeToggle();
+  document.addEventListener('astro:after-swap', setupThemeToggle);
+</script>

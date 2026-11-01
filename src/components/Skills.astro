@@ -1,0 +1,110 @@
+---
+// Skills.astro
+import { siteData } from '../data/site';
+---
+
+<section id="skills" class="py-16 sm:py-24 border-b border-[var(--white-icon-tr)] scroll-mt-20">
+  <div class="max-w-5xl mx-auto px-9 sm:px-16 lg:px-20">
+    <!-- Section heading -->
+    <div class="mb-10 sm:mb-14">
+      <p class="text-base text-[var(--sec)] shiny-sec mb-2">What I know</p>
+      <h2 class="text-4xl md:text-5xl font-medium text-[var(--white)] leading-tight">Skills</h2>
+      <p class="text-sm font-mono text-[var(--white-icon)] mt-2">
+        Foundational languages and computer science paradigms studied through coursework and projects.
+      </p>
+    </div>
+
+    <!-- Accordion list -->
+    <div class="space-y-4" id="skills-accordion">
+      {
+        siteData.skills.map((group, idx) => (
+          <div
+            class="border border-[var(--card-border)] rounded-2xl bg-[var(--card-bg)] shadow-sm transition-all duration-200 overflow-hidden"
+          >
+            <button
+              type="button"
+              class="accordion-trigger group w-full flex items-center justify-between px-6 py-5 text-left text-[var(--white)] hover:text-[var(--sec)] transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-[var(--sec)]"
+              aria-expanded={idx === 0 ? 'true' : 'false'}
+              aria-controls={`accordion-panel-${idx}`}
+              id={`accordion-trigger-${idx}`}
+            >
+              <span class="font-display font-semibold text-lg sm:text-xl text-[var(--white)] group-hover:text-[var(--sec)] transition-colors">
+                {group.category}
+              </span>
+              <div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[var(--btn-bg)] border border-[var(--card-border)] shrink-0 transition-colors">
+                <svg
+                  class="accordion-chevron w-4 h-4 text-[var(--white)] transition-transform duration-300 ease-out"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <polyline points="6 9 12 15 18 9" />
+                </svg>
+              </div>
+            </button>
+
+            <div
+              id={`accordion-panel-${idx}`}
+              role="region"
+              aria-labelledby={`accordion-trigger-${idx}`}
+              class:list={['accordion-panel overflow-hidden transition-all duration-300', idx === 0 ? '' : 'hidden']}
+            >
+              <ul
+                class="px-6 pb-6 pt-1 space-y-1.5"
+                aria-label={`Skills in ${group.category}`}
+              >
+                {group.items.map((skill) => (
+                  <li class="flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-[var(--btn-bg)] transition-colors border-b border-[var(--card-border)] last:border-0">
+                    <span class="w-2 h-2 rounded-full bg-[var(--sec)] shrink-0 inline-block shadow-sm" aria-hidden="true" />
+                    <span class="text-[var(--white)] font-mono text-sm sm:text-base font-medium leading-none">{skill}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupAccordion() {
+    const triggers = document.querySelectorAll<HTMLButtonElement>('.accordion-trigger');
+
+    triggers.forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        const panelId = trigger.getAttribute('aria-controls');
+        const panel = panelId ? document.getElementById(panelId) : null;
+        const chevron = trigger.querySelector<SVGElement>('.accordion-chevron');
+
+        if (!panel) return;
+
+        if (expanded) {
+          trigger.setAttribute('aria-expanded', 'false');
+          panel.classList.add('hidden');
+          chevron?.style.setProperty('transform', 'rotate(0deg)');
+        } else {
+          trigger.setAttribute('aria-expanded', 'true');
+          panel.classList.remove('hidden');
+          chevron?.style.setProperty('transform', 'rotate(180deg)');
+        }
+      });
+
+      // Set initial chevron state for first item (expanded)
+      if (trigger.getAttribute('aria-expanded') === 'true') {
+        const chevron = trigger.querySelector<SVGElement>('.accordion-chevron');
+        chevron?.style.setProperty('transform', 'rotate(180deg)');
+      }
+    });
+  }
+
+  setupAccordion();
+  document.addEventListener('astro:after-swap', setupAccordion);
+</script>
