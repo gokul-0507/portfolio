@@ -1,5 +1,9 @@
 # Gokul J. — Personal Portfolio Website
 
+[![Live Site](https://img.shields.io/badge/Live%20Site-Visit%20Portfolio-a476ff?style=for-the-badge&logo=vercel&logoColor=white)](https://portfolio-omega-seven-09i8c1d9jj.vercel.app)
+
+> 🌐 **Live URL:** https://portfolio-omega-seven-09i8c1d9jj.vercel.app
+
 A fast, accessible, editorial personal portfolio built with Astro, TypeScript, and Tailwind CSS. Designed around the theme **"Systems that sense and reason"** for Gokul J., an undergraduate student in Computer Science and Design at SRM Easwari Engineering College.
 
 ---
