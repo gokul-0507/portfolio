@@ -54,7 +54,7 @@ export const siteData: SiteConfig = {
   email: 'gokuljayakumar947@gmail.com',
   github: 'https://github.com/gokul-0507',
   linkedin: 'https://linkedin.com/in/gokul-j-48a026382',
-  siteUrl: 'https://gokul-portfolio.vercel.app',
+  siteUrl: 'https://portfolio-omega-seven-09i8c1d9jj.vercel.app',
   experience: [
     {
       id: 'srm-research',

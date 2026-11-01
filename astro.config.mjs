@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://gokul-portfolio.vercel.app',
+  site: 'https://portfolio-omega-seven-09i8c1d9jj.vercel.app',
   integrations: [
     tailwind({
       applyBaseStyles: false,
